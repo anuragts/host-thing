@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Client, Storage } from "appwrite";
+import { Client, Storage, Account } from "appwrite";
 import { v4 as uuidv4 } from "uuid";
 
 const Appwrite: React.FC = () => {
@@ -10,13 +10,12 @@ const Appwrite: React.FC = () => {
 
     const client = new Client()
       .setEndpoint("https://cloud.appwrite.io/v1")
-      .setProject("6462dfb43a09a57143bd")
-  
-      
+      .setProject("6462dfb43a09a57143bd");
 
     const storage = new Storage(client);
 
-    const file = (document.getElementById("uploader") as HTMLInputElement)?.files?.[0];
+    const file = (document.getElementById("uploader") as HTMLInputElement)
+      ?.files?.[0];
     const fileId = uuidv4();
 
     if (!file) {
@@ -26,7 +25,11 @@ const Appwrite: React.FC = () => {
     }
 
     try {
-      const response = await storage.createFile("6462e0f7c71911cce706", fileId, file);
+      const response = await storage.createFile(
+        "6462e0f7c71911cce706",
+        fileId,
+        file
+      );
       console.log(response); // Success
     } catch (error) {
       console.log(error); // Failure
@@ -39,7 +42,7 @@ const Appwrite: React.FC = () => {
     <div>
       <div>Upload a file</div>
       <input type="file" id="uploader" />
-      <button onClick={handleUpload} disabled={uploading}>
+      <button className="bg-white text-black px-5 py-2 rounded-xl font-semibold" onClick={handleUpload} disabled={uploading}>
         {uploading ? "Uploading..." : "Upload"}
       </button>
     </div>
