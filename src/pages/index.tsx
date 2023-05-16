@@ -1,4 +1,3 @@
-// import Image from 'next/image'
 import { Inter } from "next/font/google";
 import Appwrite from "./components/Appwrite";
 import { useAuth, useUser, SignInButton } from "@clerk/nextjs";
@@ -10,7 +9,7 @@ export default function Home() {
   const { user } = useUser();
 
   if (!isLoaded) {
-    return null
+    return null;
   }
 
   if (!user) {
