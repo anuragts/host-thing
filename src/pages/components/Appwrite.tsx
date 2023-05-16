@@ -10,7 +10,7 @@ const Appwrite: React.FC = () => {
 
     const client = new Client()
       .setEndpoint("https://cloud.appwrite.io/v1")
-      .setProject("6462dfb43a09a57143bd");
+      .setProject(`${process.env.PROJECT_ID}`);
 
     const storage = new Storage(client);
 
@@ -26,7 +26,7 @@ const Appwrite: React.FC = () => {
 
     try {
       const response = await storage.createFile(
-        "6462e0f7c71911cce706",
+        `${process.env.BUCKET_ID}`,
         fileId,
         file
       );
