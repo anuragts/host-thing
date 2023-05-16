@@ -39,10 +39,10 @@ const Appwrite: React.FC = () => {
   };
 
   return (
-    <div>
+    <div className="">
       <div>Upload a file</div>
-      <input type="file" id="uploader" />
-      <button className="bg-white text-black px-5 py-2 rounded-xl font-semibold" onClick={handleUpload} disabled={uploading}>
+      <input type="file" id="uploader" className="my-3" />
+      <button className="bg-white my-5 text-black px-5 py-2 rounded-xl font-semibold" onClick={handleUpload} disabled={uploading}>
         {uploading ? "Uploading..." : "Upload"}
       </button>
     </div>
