@@ -4,6 +4,8 @@ import { useAuth, useUser, SignInButton } from "@clerk/nextjs";
 
 const inter = Inter({ subsets: ["latin"] });
 
+// FIXME - Bug not working in custom domain i.e host.thingsxyz.co , cors error stuff.
+
 export default function Home() {
   const { isLoaded } = useAuth();
   const { user } = useUser();
@@ -33,6 +35,10 @@ export default function Home() {
       className={`flex min-h-screen flex-col items-center justify-between p-24 ${inter.className}`}
     >
       <Appwrite />
+
+      <div>
+        {/* TODO - Signout btn */}
+      </div>
     </main>
   );
 }
