@@ -24,6 +24,8 @@ const Appwrite: React.FC = () => {
       return;
     }
 
+    // TODO- Make DB
+
     try {
       const response = await storage.createFile(
         "6462e0f7c71911cce706",
@@ -31,12 +33,15 @@ const Appwrite: React.FC = () => {
         file
       );
       console.log(response); // Success
+      // TODO - save fileid to user in db.
     } catch (error) {
       console.log(error); // Failure
     }
-
+    
     setUploading(false);
   };
+
+  // TODO - Return a url for user.
 
   return (
     <div className="">
