@@ -33,6 +33,7 @@ const Appwrite: React.FC = () => {
         file
       );
       console.log(response); // Success
+      
       // TODO - save fileid to user in db.
     } catch (error) {
       console.log(error); // Failure
