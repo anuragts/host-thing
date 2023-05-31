@@ -13,12 +13,12 @@ datasource db {
 
 model User {
   id String @id @default(uuid())
-  name String
+  name String? 
   email String @unique
-  photos Photos[]
+  photos Photo[]
 }
 
-model Photos {
+model Photo {
   id String @id @default(uuid())
   url String
   user User @relation(fields: [userId], references: [id])
