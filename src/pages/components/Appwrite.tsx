@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Client, Storage, Account } from "appwrite";
 import { v4 as uuidv4 } from "uuid";
 
+
 const Appwrite: React.FC = () => {
   const [uploading, setUploading] = useState(false);
 
@@ -32,8 +33,38 @@ const Appwrite: React.FC = () => {
         fileId,
         file
       );
+
+      // pass {url,appwriteId , userId}
+
       console.log(response); // Success
+
+      const appwriteId = response.$id;
+
+      const url =` https://cloud.appwrite.io/v1/storage/buckets/6462e0f7c71911cce706/files/${appwriteId}/view?project=6462dfb43a09a57143bd`
+
       
+
+      //  https://cloud.appwrite.io/v1/storage/buckets/6462e0f7c71911cce706/files/6dc8fd98-2d98-443c-abbb-9e30f4e46808/view?project=6462dfb43a09a57143bd
+      //  https://cloud.appwrite.io/v1/storage/buckets/6462e0f7c71911cce706/files/a9e95c06-81d3-4cc5-af9b-15c331cddb01/view?project=6462dfb43a09a57143bd
+
+    //   {
+    //     "$id": "a9e95c06-81d3-4cc5-af9b-15c331cddb01",
+    //     "bucketId": "6462e0f7c71911cce706",
+    //     "$createdAt": "2023-05-30T23:53:41.187+00:00",
+    //     "$updatedAt": "2023-05-30T23:53:41.187+00:00",
+    //     "$permissions": [
+    //         "read(\"user:6462ebffc1e66be80a39\")",
+    //         "update(\"user:6462ebffc1e66be80a39\")",
+    //         "delete(\"user:6462ebffc1e66be80a39\")"
+    //     ],
+    //     "name": "Screenshot from 2023-05-28 18-28-17.png",
+    //     "signature": "1fffec2be7d99a33078aa19f55428275",
+    //     "mimeType": "image/png",
+    //     "sizeOriginal": 15450,
+    //     "chunksTotal": 1,
+    //     "chunksUploaded": 1
+    // }
+
       // TODO - save fileid to user in db.
     } catch (error) {
       console.log(error); // Failure
